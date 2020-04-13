@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" ng-app="ShoppingListCheckOff" class="ng-scope">
+<head>
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="angular.min.js"></script>
+  <script src="app.js"></script>
+    <style>
+      .emptyMessage {
+        font-weight: bold;
+        color: red;
+        font-size: 1.2em;
+      }
+      li {
+        margin-bottom: 7px;
+        font-size: 1.2em;
+      }
+      li > button {
+        margin-left: 6px;
+      }
+      button > span {
+        color: green;
+      }
+
+    </style>
+  </head>
+
+<body>
+  <div class="container">
+  <h1>Shopping List Check Off</h1>
+
+  <div class="row">
+    <!-- To Buy List -->
+    <div class="col-md-6 ng-scope" ng-controller="ToBuyController as shoppingList">
+     <h2>To Buy:</h2>
+     <ul>
+       <!-- ngRepeat: item in shoppingList.items -->
+       <li ng-repeat="item in shoppingList.items  track by $index" class="ng-binding ng-scope">{{item.quantity}}  of {{item.name}}
+
+         <button class="btn btn-default" ng-click="shoppingList.removeItem($index)">
+
+           <span class="glyphicon glyphicon-ok"></span>
+           Bought
+         </button>
+       </li>
+    </ul>
+    <!-- ngIf: shoppingList.items.length == 0 -->
+    <div ng-if="shoppingList.items.length == 0" class="emptyMessage ng-scope">Everything is bought.</div>
+    </div>
+
+    <!-- Already Bought List -->
+    <div class="col-md-6 ng-scope" ng-controller="AlreadyBoughtController as alreadyBought">
+     <h2>Already Bought:</h2>
+     <ul>
+        <li ng-repeat="item in alreadyBought.items" class="ng-binding ng-scope">Bought {{item.quantity}}  of {{item.name}}</li>
+       <!-- ngRepeat: item in alreadyBought.items -->
+     </ul>
+     <!-- ngIf: alreadyBought.items.length == 0 -->
+     <div ng-if="alreadyBought.items.length == 0" class="emptyMessage ng-scope">Nothing bought yet.</div><!-- end ngIf: alreadyBought.items.length == 0 -->
+    </div>
+  </div>
+</div>
+
+
+
+</body></html>
