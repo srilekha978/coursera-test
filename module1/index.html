@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"  class="ng-scope">
+<head>
+    <title>Lunch Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Add bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- Add Angulasjs CDN -->
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+        .message {
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body ng-app = "LunchCheck">
+    <div class="container ng-scope" ng-app="LunchCheck"  ng-controller="LunchCheckController">
+        <h1>Lunch Checker</h1>
+
+        <div class="form-group">
+            <input id="lunch-menu" type="text" ng-model="lunchItems" placeholder="list comma separated dishes you usually have for lunch" class="form-control ng-pristine ng-untouched ng-valid ng-empty">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" ng-click="checkMeal()">Check If Too Much</button>
+        </div>
+        <div class="form-group message ng-binding">
+          <br>{{message}}<br>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
